@@ -3,47 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <title>Peklos</title>
+    <title>Frontend-разработчик (Vue 3) | Резюме</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#0f1117',
+                            800: '#151924',
+                            700: '#1a1f2e',
+                        },
+                        accent: {
+                            blue: '#5e81ff',
+                            purple: '#b48bf0',
+                            green: '#a3eea0',
+                            pink: '#ff7eb5',
+                            cyan: '#7bdde2',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 10px 30px -15px rgba(0, 0, 0, 0.4)',
+                        'card-hover': '0 20px 40px -15px rgba(0, 0, 0, 0.5)',
+                        'tech': '0 0 15px rgba(94, 129, 255, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background: linear-gradient(270deg, #0d1b2a, #3b1b5a, #1a1f2e, #0d1b2a);
+            background-size: 600% 600%;
+            animation: gradientAnimation 25s ease infinite;
+            color: white;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.4);
+        }
+        .card-hover:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+        .skill-badge {
+            transition: all 0.2s ease;
+        }
+        .skill-badge:hover {
+            transform: scale(1.08);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #5e81ff, #b48bf0, #7bdde2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient-shift 5s ease infinite;
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #5e81ff, #b48bf0);
+            border-radius: 4px;
+        }
+        .glow {
+            text-shadow: 0 0 15px rgba(94, 129, 255, 0.5);
+        }
+        .header-icon {
+            transition: all 0.3s ease;
+        }
+        .header-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 20px -5px rgba(94, 129, 255, 0.4);
+        }
+        .tech-highlight {
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(94, 129, 255, 0.7);
+            padding: 0 4px;
+            border-radius: 4px;
+            background: rgba(94, 129, 255, 0.15);
+            display: inline-block;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+        .tech-highlight:hover {
+            background: rgba(94, 129, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(94, 129, 255, 0.3);
+        }
+        .note {
+            background: rgba(255, 193, 7, 0.15);
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <img src="sewer.jpg" alt="logoPEKLOS" width="81">
-        <nav>
-            <ul>
-                <li><a href="#">About me</a></li>
-                <li><a href="#">Creations</a></li>
-                <li><a href="#">Skills</a></li>
-                <li><a href="#">Socials</a></li>
-            </ul>
-        </nav>
-        <div class="popup-button">
-            X
+<body class="min-h-screen font-sans">
+    <header class="container mx-auto px-4 pt-12 pb-8">
+        <div class="flex flex-col items-center text-center mb-8" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 glow">Владислав Александрович</h1>
+            <h2 class="text-xl md:text-2xl font-semibold gradient-text">Frontend-разработчик (Vue 3)</h2>
+            <p class="mt-4 max-w-2xl text-gray-300 text-lg">С 3 годами опыта в веб-разработке. Специализируюсь на создании современных, адаптивных и производительных веб-приложений.</p>
+        </div>
+        
+        <div class="flex justify-center space-x-5 mb-8" >
+            <a href="https://github.com/peklos" data-aos="fade-up" data-aos-delay="100" target="_blank" class="bg-dark-700 hover:bg-accent-blue text-white p-4 rounded-xl transition-all duration-300 header-icon shadow-card">
+                <i class="fab fa-github text-2xl"></i>
+            </a>
+            <a href="mailto:vladpashechko@mail.ru" data-aos="fade-up" data-aos-delay="200" class="bg-dark-700 hover:bg-accent-green text-white p-4 rounded-xl transition-all duration-300 header-icon shadow-card">
+                <i class="fas fa-envelope text-2xl"></i>
+            </a>
+            <a href="tel:89003703668" data-aos="fade-up" data-aos-delay="300" class="bg-dark-700 hover:bg-accent-pink text-white p-4 rounded-xl transition-all duration-300 header-icon shadow-card">
+                <i class="fas fa-phone text-2xl"></i>
+            </a>
+            <a href="https://t.me/swslt1984" data-aos="fade-up" data-aos-delay="400" target="_blank" class="bg-dark-700 hover:bg-accent-purple text-white p-4 rounded-xl transition-all duration-300 header-icon shadow-card">
+                <i class="fab fa-telegram text-2xl"></i>
+            </a>
         </div>
     </header>
-    <main>
-        <section class="introducing">
-            <div class="intro-container">
-                <div class="block block1">
-                    <img src="sewer.jpg" alt="sewerPEKLOS" width="470">
-                    <p>peklos</p>
-                    <span>pic from<br>“Sewerslvt - we had good times together, don't forget that”</span>
-                </div>
-                <div class="right-column">
-                    <div class="block block2">
-                        <p class="block2-p1">Hi &nbsp;o/</p>
-                        <p class="block2-p2">My name is <mark>Peklos</mark></p>
+
+    <main class="container mx-auto px-4 pb-16 max-w-5xl">
+        <!-- О себе -->
+        <section class="mb-12" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-2xl font-bold mb-8 text-center section-title">О себе</h2>
+            <div class="bg-dark-800 rounded-2xl p-8 card-hover">
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    Участвовал в командных проектах, умею работать в коллективе, дружелюбен и легко нахожу общий язык. Основной стек - 
+                    <span class="tech-highlight">Vue 3</span> (<span class="tech-highlight">Options API</span>, <span class="tech-highlight">Composition API</span>, <span class="tech-highlight">Pinia</span>, <span class="tech-highlight">Router</span>), 
+                    <span class="tech-highlight">TypeScript</span>, <span class="tech-highlight">Tailwind</span>, адаптивная верстка, интеграция 
+                    <span class="tech-highlight">REST API</span>. Есть опыт <span class="tech-highlight">PHP</span>/<span class="tech-highlight">MySQL</span> и 
+                    <span class="tech-highlight">jQuery</span>. Постоянно развиваюсь, выполняю тестовые задания и беру новые фриланс-заказы для прокачки навыков.
+                </p>
+            </div>
+        </section>
+
+        <!-- Навыки -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-8 text-center section-title" data-aos="fade-up">Навыки</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-dark-800 rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-4 text-accent-blue text-center"><i class="fas fa-code mr-2"></i>Frontend</h3>
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">HTML</span>
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">CSS</span>
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">JavaScript (ES6+)</span>
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">TypeScript</span>
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">Vue 3</span>
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">Tailwind</span>
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">Bootstrap</span>
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">Headless UI</span>
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">Swiper</span>
+                        <span class="skill-badge bg-dark-700 text-accent-blue px-4 py-2 rounded-xl text-sm font-medium">AOS</span>
                     </div>
-                    <div class="block block3">
-                        <h1>About me</h1>
-                        <p>My name is Vlad, I am 17 years old and I am a beginner front-end developer. I have several years of experience in such areas of development as: graphic design, web design, website layout. I also know the basics of the Python language. My goals are to thoroughly study front-end development and do this for a long time, because I get KAIF from studying and practicing programming. Also, I am from Russia, I study in college and have experience in commercial activities from everything I listed. <br>Links to my social networks and works will be below.</p>
+                </div>
+                
+                <div class="bg-dark-800 rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold mb-4 text-accent-purple text-center"><i class="fas fa-server mr-2"></i>Backend</h3>
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <span class="skill-badge bg-dark-700 text-accent-purple px-4 py-2 rounded-xl text-sm font-medium">PHP</span>
+                        <span class="skill-badge bg-dark-700 text-accent-purple px-4 py-2 rounded-xl text-sm font-medium">SQL</span>
+                        <span class="skill-badge bg-dark-700 text-accent-purple px-4 py-2 rounded-xl text-sm font-medium">MySQL</span>
+                        <span class="skill-badge bg-dark-700 text-accent-purple px-4 py-2 rounded-xl text-sm font-medium">jQuery</span>
                     </div>
                 </div>
-            </div>            
+                
+                <div class="bg-dark-800 rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold mb-4 text-accent-green text-center"><i class="fas fa-tools mr-2"></i>Инструменты</h3>
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <span class="skill-badge bg-dark-700 text-accent-green px-4 py-2 rounded-xl text-sm font-medium">Git</span>
+                        <span class="skill-badge bg-dark-700 text-accent-green px-4 py-2 rounded-xl text-sm font-medium">GitHub</span>
+                        <span class="skill-badge bg-dark-700 text-accent-green px-4 py-2 rounded-xl text-sm font-medium">npm</span>
+                        <span class="skill-badge bg-dark-700 text-accent-green px-4 py-2 rounded-xl text-sm font-medium">Vite</span>
+                        <span class="skill-badge bg-dark-700 text-accent-green px-4 py-2 rounded-xl text-sm font-medium">Webpack</span>
+                        <span class="skill-badge bg-dark-700 text-accent-green px-4 py-2 rounded-xl text-sm font-medium">Vue CLI</span>
+                        <span class="skill-badge bg-dark-700 text-accent-green px-4 py-2 rounded-xl text-sm font-medium">ESLint</span>
+                        <span class="skill-badge bg-dark-700 text-accent-green px-4 py-2 rounded-xl text-sm font-medium">Prettier</span>
+                        <span class="skill-badge bg-dark-700 text-accent-green px-4 py-2 rounded-xl text-sm font-medium">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Опыт работы -->
+        <section class="mb-12" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-8 text-center section-title">Опыт работы</h2>
+            <div class="bg-dark-800 rounded-2xl p-8 card-hover">
+                <div class="flex flex-col items-center mb-6">
+                    <div class="bg-gradient-to-r from-accent-blue to-accent-purple p-4 rounded-xl mb-4 shadow-card">
+                        <i class="fas fa-laptop-code text-white text-3xl"></i>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-semibold">Фриланс</h3>
+                        <p class="text-accent-blue text-lg">2023 - настоящее время</p>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside text-gray-300 space-y-3 text-lg pl-4 max-w-2xl mx-auto">
+                    <li>Разработка и доработка интернет-магазинов (JS, JQuery, TS)</li>
+                    <li>Создание сайтов под заказ (Vue, PHP, Tailwind/HTML+CSS)</li>
+                    <li>Выполнение тестовых заданий для компаний</li>
+                    <li>Разработка Telegram-ботов для автоматизации</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Проекты -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-8 text-center section-title" data-aos="fade-up">Проекты</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Taskify -->
+                <div class="bg-dark-800 rounded-2xl p-6 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold mb-3 text-accent-blue text-center">Taskify - менеджер задач</h3>
+                    <p class="text-gray-400 mb-4 text-center">Vue 3 (Composition API, Pinia, Router), TypeScript, TailwindCSS, Vite, Axios, json-server</p>
+                    <p class="text-gray-300 mb-4 flex-grow">Функционал: аутентификация, CRUD для задач, фильтрация и сортировка</p>
+                    <div class="note">
+                        <i class="fas fa-info-circle text-yellow-400 mr-2"></i>
+                        Сайт может работать некорректно, так как залит на бесплатные фронтенд и бекенд хостинги
+                    </div>
+                    <div class="flex space-x-4 justify-center mt-4">
+                        <a href="https://unrivaled-alpaca-8e6a29.netlify.app" target="_blank" class="text-accent-blue hover:text-white bg-dark-700 hover:bg-accent-blue px-4 py-2 rounded-lg transition-all duration-300 flex items-center shadow-card">
+                            <i class="fas fa-external-link-alt mr-2"></i> Демо
+                        </a>
+                        <a href="https://github.com/peklos/Taskify" target="_blank" class="text-accent-blue hover:text-white bg-dark-700 hover:bg-accent-blue px-4 py-2 rounded-lg transition-all duration-300 flex items-center shadow-card">
+                            <i class="fab fa-github mr-2"></i> Код
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- YoriShop -->
+                <div class="bg-dark-800 rounded-2xl p-6 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold mb-3 text-accent-purple text-center">YoriShop - интернет-магазин одежды</h3>
+                    <p class="text-gray-400 mb-4 text-center">Vue 3 (Pinia, Router, Options API), Tailwind, Headless UI</p>
+                    <p class="text-gray-300 mb-4 flex-grow">Многостраничный магазин одежды с полным функционалом: корзина, избранное, фильтры, адаптивная верстка</p>
+                    <div class="flex space-x-4 justify-center mt-auto">
+                        <a href="https://peklos.github.io/YoriShop" target="_blank" class="text-accent-purple hover:text-white bg-dark-700 hover:bg-accent-purple px-4 py-2 rounded-lg transition-all duration-300 flex items-center shadow-card">
+                            <i class="fas fa-external-link-alt mr-2"></i> Демо
+                        </a>
+                        <a href="https://github.com/peklos/YoriShop" target="_blank" class="text-accent-purple hover:text-white bg-dark-700 hover:bg-accent-purple px-4 py-2 rounded-lg transition-all duration-300 flex items-center shadow-card">
+                            <i class="fab fa-github mr-2"></i> Код
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Cryptonomicon -->
+                <div class="bg-dark-800 rounded-2xl p-6 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold mb-3 text-accent-green text-center">Cryptonomicon - мониторинг криптовалют</h3>
+                    <p class="text-gray-400 mb-4 text-center">Vue 3, Tailwind, REST API (Binance)</p>
+                    <p class="text-gray-300 mb-4 flex-grow">Отслеживание курсов криптовалют в реальном времени с использованием Binance API. Реализована оптимизация запросов к серверу для уменьшения нагрузки.</p>
+                    <div class="flex space-x-4 justify-center mt-auto">
+                        <a href="https://peklos.github.io/Cryptonomicon" target="_blank" class="text-accent-green hover:text-white bg-dark-700 hover:bg-green-700 px-4 py-2 rounded-lg transition-all duration-300 flex items-center shadow-card">
+                            <i class="fas fa-external-link-alt mr-2"></i> Демо
+                        </a>
+                        <a href="https://github.com/peklos/Cryptonomicon" target="_blank" class="text-accent-green hover:text-white bg-dark-700 hover:bg-green-700 px-4 py-2 rounded-lg transition-all duration-300 flex items-center shadow-card">
+                            <i class="fab fa-github mr-2"></i> Код
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- OnlineShop -->
+                <div class="bg-dark-800 rounded-2xl p-6 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-xl font-semibold mb-3 text-accent-pink text-center">OnlineShop - интернет-магазин техники</h3>
+                    <p class="text-gray-400 mb-4 text-center">PHP + MySQL + jQuery, адаптивная верстка без UI-библиотек</p>
+                    <p class="text-gray-300 mb-4 flex-grow">Полуфункциональный интернет-магазин с регистрацией и полностью самостоятельной версткой без библиотек. На демо представлен только лендинг первой страницы.</p>
+                    <div class="flex space-x-4 justify-center mt-auto">
+                        <a href="https://peklos.github.io/onlineShop" target="_blank" class="text-accent-pink hover:text-white bg-dark-700 hover:bg-accent-pink px-4 py-2 rounded-lg transition-all duration-300 flex items-center shadow-card">
+                            <i class="fas fa-external-link-alt mr-2"></i> Демо
+                        </a>
+                        <a href="https://github.com/peklos/onlineShop" target="_blank" class="text-accent-pink hover:text-white bg-dark-700 hover:bg-accent-pink px-4 py-2 rounded-lg transition-all duration-300 flex items-center shadow-card">
+                            <i class="fab fa-github mr-2"></i> Код
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Образование -->
+        <section class="mb-12" data-aos="fade-up">
+            <h2 class="text-2xl font-bold mb-8 text-center section-title">Образование</h2>
+            <div class="bg-dark-800 rounded-2xl p-8 card-hover">
+                <div class="mb-6 text-center">
+                    <h3 class="text-xl font-semibold text-accent-blue">Самостоятельное обучение</h3>
+                    <p class="text-gray-300">Изучаю и практикую новые и современные технологии для веб-разработки на протяжении 3 лет</p>
+                </div>
+                <div class="mb-6 text-center">
+                    <h3 class="text-xl font-semibold text-accent-purple">Колледж: Информационные системы и программирование</h3>
+                    <p class="text-gray-300">3 курс</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold text-accent-green">Курсы: веб-дизайн, графический дизайн, Python</h3>
+                </div>
+            </div>
         </section>
     </main>
+
+    <footer class="bg-dark-800 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 mb-4 md:mb-0 text-lg">Владислав Александрович</p>
+                <div class="flex space-x-5">
+                    <a href="https://github.com/peklos" target="_blank" class="text-gray-400 hover:text-accent-blue transition-colors text-2xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:vladpashechko@mail.ru" class="text-gray-400 hover:text-accent-green transition-colors text-2xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://t.me/swslt1984" target="_blank" class="text-gray-400 hover:text-accent-purple transition-colors text-2xl">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                once: true,
+                easing: 'ease-out-quart',
+            });
+        });
+    </script>
 </body>
 </html>
